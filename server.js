@@ -69,6 +69,7 @@ const Controller = require('./api/controllers')
 app.use('/api/users', Controller.usersController)
 app.use('/api/enterprise', Controller.enterpriseController)
 app.use('/api/blog', Controller.blogController)
+app.use('/api/upload', Controller.uploadController)
 
 //******************************************** ROUTES
 

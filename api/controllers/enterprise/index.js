@@ -33,6 +33,7 @@ router.delete('/delete/:id', async (req, res) => {
 })
 
 router.get('/getall', async (req, res) => {
+  await Service.getEnterprise()
   try {
     const result = await Service.getEnterprise()
     return res.status(200).json({ message: 'OK', data: result })

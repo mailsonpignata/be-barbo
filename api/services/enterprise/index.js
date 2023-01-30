@@ -17,7 +17,25 @@ const deleteEnterprise = async (id) => {
 };
 
 const getEnterprise = async function () {
-    return Base.getAll()
+  const enterprise = await Base.getAll();
+  let result = [];
+  await Promise.all(
+    enterprise.map(async (x) => {
+      console.log("Result1", x.id);
+
+      const enterpriseById = await Base.getById(x.id);
+      const image = await Base_images.getByEnterpriseId(x.id);
+
+      const data = {
+        enterprise: enterpriseById,
+        images: image,
+      };
+
+      result.push(data);
+    })
+  );
+  console.log("Result3", result);
+  return result;
 };
 
 const getEnterpriseById = async function (id) {
@@ -26,7 +44,7 @@ const getEnterpriseById = async function (id) {
 
   const data = {
     enterprise: enterprise[0],
-    images
+    images,
   };
   return data;
 };
