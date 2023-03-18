@@ -27,7 +27,7 @@ const getEnterprise = async function () {
       const image = await Base_images.getByEnterpriseId(x.id);
 
       const data = {
-        enterprise: enterpriseById,
+        enterprise: enterpriseById[0],
         images: image,
       };
 
