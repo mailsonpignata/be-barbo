@@ -59,4 +59,13 @@ router.get('/getAllFilter/:city/:type', async (req, res) => {
   }
 })
 
+router.get('/getMains', async (req, res) => {
+  try {
+    const result = await Service.getMains()
+    return res.status(200).json({ message: 'OK', data: result })
+  } catch (error) {
+    return res.status(500).send(returnError(error))
+  }
+})
+
 module.exports = router

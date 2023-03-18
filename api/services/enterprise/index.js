@@ -73,9 +73,35 @@ const getEnterpriseFilter = async function (city, type) {
   return result;
 };
 
+const getMains = async function () {
+  const enterprise = await Base.getAll();
+  //const mains = enterprise.find(({ main }) => main === 1)
+
+  let result = [];
+  await Promise.all(
+    enterprise.map(async (x) => {
+      console.log("Result1", x.id);
+      if(x.main === 1){
+      const enterpriseById = await Base.getById(x.id);
+      const image = await Base_images.getByEnterpriseId(x.id);
+
+      const data = {
+        enterprise: enterpriseById[0],
+        images: image,
+      };
+
+      result.push(data);
+    }
+    })
+  );
+  console.log("Result3", result);
+  return result;
+};
+
 exports.addEnterprise = addEnterprise;
 exports.getEnterprise = getEnterprise;
 exports.updateEnterprise = updateEnterprise;
 exports.deleteEnterprise = deleteEnterprise;
 exports.getEnterpriseById = getEnterpriseById;
 exports.getEnterpriseFilter = getEnterpriseFilter;
+exports.getMains = getMains;
