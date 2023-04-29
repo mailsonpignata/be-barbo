@@ -66,8 +66,11 @@ router.post('/image/:type/:enterpriseId/:statusId', upload.single('file'), async
     console.log('result add', result)
     return res.status(200).json({
       message: 'OK',
-      url: filename,
-      id: result,
+      type: req.params.type,
+      enterprise_id: req.params.enterpriseId,
+      status: req.params.statusId,
+      link: filename,
+      id: result[0],
     })
   } catch (error) {
     return res.status(500).send(returnError(error))
