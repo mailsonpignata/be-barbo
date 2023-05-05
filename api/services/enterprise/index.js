@@ -75,7 +75,6 @@ const getEnterpriseFilter = async function (city, type) {
 
 const getMains = async function () {
   const enterprise = await Base.getAll();
-  //const mains = enterprise.find(({ main }) => main === 1)
 
   let result = [];
   await Promise.all(

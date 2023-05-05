@@ -4,5 +4,4 @@ dist
 package-lock.json
 yarn.lock
 
-uploads/*
 tmp/*
